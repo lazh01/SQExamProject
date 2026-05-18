@@ -1,9 +1,9 @@
 using System.Text.Json;
-using PcCompatibility.Domain.Entities;
-using PcCompatibility.Infrastructure.Data;
-using PcCompatibility.Infrastructure.DTOs;
+using Domain.Entities;
+using Infrastructure.Data;
+using Infrastructure.DTOs;
 
-namespace PcCompatibility.Infrastructure.Seeding;
+namespace Infrastructure.Seeding;
 
 public static class BuildcoresSeeder
 {
@@ -60,14 +60,14 @@ public static class BuildcoresSeeder
 
             context.Motherboards.Add(new Motherboard
             {
-                OpenDbId     = dto.OpenDbId,
-                Name         = dto.Metadata?.Name ?? Path.GetFileNameWithoutExtension(file),
+                OpenDbId = dto.OpenDbId,
+                Name = dto.Metadata?.Name ?? Path.GetFileNameWithoutExtension(file),
                 Manufacturer = dto.Metadata?.Manufacturer ?? string.Empty,
-                Socket       = dto.Socket ?? string.Empty,
-                FormFactor   = dto.FormFactor ?? string.Empty,
-                MemoryType   = dto.MemoryType ?? string.Empty,
-                MemorySlots  = dto.MemorySlots ?? 0,
-                MaxMemoryGb  = dto.MaxMemory ?? 0,
+                Socket = dto.Socket ?? string.Empty,
+                FormFactor = dto.FormFactor ?? string.Empty,
+                MemoryType = dto.Memory?.RamType ?? string.Empty,
+                MemorySlots = dto.Memory?.Slots ?? 0,
+                MaxMemoryGb = dto.Memory?.Max ?? 0,
             });
         }
     }
@@ -108,12 +108,12 @@ public static class BuildcoresSeeder
 
             context.Gpus.Add(new Gpu
             {
-                OpenDbId                  = dto.OpenDbId,
-                Name                      = dto.Metadata?.Name ?? Path.GetFileNameWithoutExtension(file),
-                Manufacturer              = dto.Metadata?.Manufacturer ?? string.Empty,
-                Tdp                       = dto.Specifications?.Tdp ?? 0,
-                LengthMm                  = dto.Specifications?.LengthMm ?? 0,
-                RequiredPowerConnectors8Pin = dto.Specifications?.PowerConnectors8Pin ?? 0,
+                OpenDbId = dto.OpenDbId,
+                Name = dto.Metadata?.Name ?? Path.GetFileNameWithoutExtension(file),
+                Manufacturer = dto.Metadata?.Manufacturer ?? string.Empty,
+                Tdp = dto.Tdp ?? 0,
+                LengthMm = dto.Length ?? 0,
+                RequiredPowerConnectors8Pin = dto.PowerConnectors?.Pcie8Pin ?? 0,
             });
         }
     }

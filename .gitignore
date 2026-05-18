@@ -12,3 +12,5 @@
 /tests/UnitTests/bin/Debug/net10.0
 /tests/UnitTests/obj/Debug/net10.0
 /tests/UnitTests/obj
+/Application/obj
+/Application/bin/Debug/net10.0

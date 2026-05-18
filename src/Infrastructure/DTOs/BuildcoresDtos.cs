@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace PcCompatibility.Infrastructure.DTOs;
+namespace Infrastructure.DTOs;
 
 // ─── CPU ──────────────────────────────────────────────────────────────────────
 
@@ -50,17 +50,23 @@ public class MotherboardDto
     [JsonPropertyName("form_factor")]
     public string? FormFactor { get; set; }
 
-    [JsonPropertyName("memory_type")]
-    public string? MemoryType { get; set; }
-
-    [JsonPropertyName("memory_slots")]
-    public int? MemorySlots { get; set; }
-
-    [JsonPropertyName("max_memory")]
-    public int? MaxMemory { get; set; }
+    [JsonPropertyName("memory")]
+    public MotherboardMemory? Memory { get; set; }
 
     [JsonPropertyName("metadata")]
     public ComponentMetadata? Metadata { get; set; }
+}
+
+public class MotherboardMemory
+{
+    [JsonPropertyName("ram_type")]
+    public string? RamType { get; set; }
+
+    [JsonPropertyName("slots")]
+    public int? Slots { get; set; }
+
+    [JsonPropertyName("max")]
+    public int? Max { get; set; }
 }
 
 // ─── RAM ──────────────────────────────────────────────────────────────────────
@@ -108,20 +114,26 @@ public class GpuDto
     [JsonPropertyName("metadata")]
     public ComponentMetadata? Metadata { get; set; }
 
-    [JsonPropertyName("specifications")]
-    public GpuSpecifications? Specifications { get; set; }
-}
-
-public class GpuSpecifications
-{
     [JsonPropertyName("tdp")]
     public int? Tdp { get; set; }
 
-    [JsonPropertyName("length_mm")]
-    public double? LengthMm { get; set; }
+    [JsonPropertyName("length")]
+    public double? Length { get; set; }
 
-    [JsonPropertyName("power_connectors_8pin")]
-    public int? PowerConnectors8Pin { get; set; }
+    [JsonPropertyName("power_connectors")]
+    public GpuPowerConnectors? PowerConnectors { get; set; }
+}
+
+public class GpuPowerConnectors
+{
+    [JsonPropertyName("pcie_8_pin")]
+    public int? Pcie8Pin { get; set; }
+
+    [JsonPropertyName("pcie_12VHPWR")]
+    public int? Pcie12VHpwr { get; set; }
+
+    [JsonPropertyName("pcie_12V_2x6")]
+    public int? Pcie12V2x6 { get; set; }
 }
 
 // ─── PSU ──────────────────────────────────────────────────────────────────────

@@ -1,4 +1,4 @@
-namespace PcCompatibility.Domain.Entities;
+namespace Domain.Entities;
 
 public class Cpu
 {
