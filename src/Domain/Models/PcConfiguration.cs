@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Domain.Models;
 
-public class PcConfiguration
+public record PcConfiguration
 {
     public Cpu? Cpu { get; set; }
     public Motherboard? Motherboard { get; set; }

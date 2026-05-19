@@ -14,4 +14,7 @@ public class CompatibilityResult
 
     public static CompatibilityResult Fail(string reason) =>
         new() { IsCompatible = false, Errors = [reason] };
+
+    public static CompatibilityResult Fail(IEnumerable<string> reasons) =>
+        new() { IsCompatible = false, Errors = new List<string>(reasons) };
 }
